@@ -1,4 +1,5 @@
 import {Todo, TodoList} from './todo.js';
+import { mutable, map } from 'https://unpkg.com/fleuvejs@latest/build/index.js';
 
 const todoForm = document.querySelector('.todo__form');
 const todoDesc = document.getElementById('todo-desc');
@@ -6,16 +7,24 @@ const todoWhen = document.getElementById('todo-when');
 const submitBtn = document.getElementById('submit-btn');
 const todoListDOM = document.querySelector('.todo-list');
 
-const todoList = new TodoList();
+const state = mutable(new TodoList());
+
+state.subscribe({
+    next: (todoList) => {
+        todoListDOM.innerHTML = '';
+        todoListDOM.append(...todoListToDOM(todoList));
+    }
+})
 
 todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const description = todoDesc.value;
-    const when = todoWhen.value ? new Date(todoWhen.value) : null;
-    const todo = new Todo(description, when);
-    todoList.add(todo);
-    todoListDOM.innerHTML = '';
-    todoListDOM.append(...todoListToDOM(todoList));
+    state.compile(map((todoList) => {
+        const description = todoDesc.value;
+        const when = todoWhen.value ? new Date(todoWhen.value) : null;
+        const todo = new Todo(description, when);
+        todoList.add(todo);
+        return todoList;
+    }));
 });
 
 todoDesc.addEventListener('input', () => {
