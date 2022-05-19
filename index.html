@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <script defer type="module" src="./scripts/app.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Todo List</h1>
@@ -22,8 +24,27 @@
                 <input id="submit-btn" type="submit" value="OK" disabled>
             </form>
         </section>
-        <section class="todo-list">          
+        <section class="todo-list">
+            <div class="task task--TODO">
+                <div class="task__info">
+                    <p>CV Alternance</p>
+                    <p>Pour le : 22/05/2022</p>
+                </div><input type="checkbox">
+            </div>
+            <div class="task task--DONE">
+                <div class="task__info">
+                    <p>Rendre devoir PHP</p>
+                    <p>Pour le : 04/05/2022</p>
+                </div><input type="checkbox">
+            </div>
+            <div class="task task--LATE">
+                <div class="task__info">
+                    <p>Investir dans le bitcoin</p>
+                    <p>Pour le : 01/01/2012</p>
+                </div><input type="checkbox">
+            </div>
         </section>
     </main>
 </body>
+
 </html>
