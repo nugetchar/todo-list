@@ -68,6 +68,7 @@ main {
     border-top: 1px solid #A91079;
     padding: 4px;
     flex-basis: 100%;
+    align-items: center;
 }
 
 .task__info {
@@ -76,6 +77,7 @@ main {
 
 .task > input[type="checkbox"] {
     width: 30px;
+    height: 30px;
 }
 
 .task--TODO {
